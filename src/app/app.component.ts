@@ -11,9 +11,7 @@ export class AppComponent {
   text = this.testService.data;
 
   constructor(
-    @Optional() @Inject(WINDOW) readonly window: Window,
+    @Optional() @Self() @Inject(WINDOW) readonly window: Window,
     private testService: TestService
-  ) {
-    console.log(testService.data);
-  }
+  ) {}
 }
