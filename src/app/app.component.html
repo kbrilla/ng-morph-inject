@@ -1,0 +1,46 @@
+<header class="header">
+  <a href="https://github.com/Tinkoff/ng-morph" target="_blank">
+    <img
+      alt="github"
+      src="https://img.shields.io/github/stars/tinkoff/ng-morph?style=flat-square"
+    />
+  </a>
+  |
+  <a href="https://www.npmjs.com/package/ng-morph" target="_blank">
+    <img
+      alt="npm-link"
+      src="https://img.shields.io/npm/dy/ng-morph?color=dark-green&style=flat-square"
+    />
+  </a>
+  |
+  <a href="https://tinkoff.github.io/ng-morph/getting-started" target="_blank"
+    >Docs</a
+  >
+</header>
+
+<p>
+  <strong>ng-morph</strong> is a large set of tools for both global code base
+  updates in your project and speeding up your work on Angular schematics. It
+  has <a tuiLink href="https://ts-morph.com/">ts-morph</a> under the hood and
+  allows you to manipulate with safe TypeScript AST.
+</p>
+
+<p>
+  In this example you have an Angular project and a ng-morph script in
+  <i>ng-morph-scripts/script.ts</i> folder. Once you explore it and current
+  files, you can run it by adding new Stackblitz terminal and running:
+</p>
+
+<code> ts-node ng-morph-scripts/script.ts </code>
+
+<p class="test-data">
+  {{ text }} to check that class is compiled with no errors
+</p>
+
+<p>
+  <i>Extra:</i>
+
+  modify the script to handle @Optional and @Self DI decorators as well. It
+  should not take much time even if you've never used ng-morph before and with
+  no docs.
+</p>
