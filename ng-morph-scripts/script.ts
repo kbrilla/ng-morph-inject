@@ -31,20 +31,31 @@ components.forEach((component) => {
     0,
     constructorParams.map((param) => {
       const hasSelf = !!param.getDecorator('Self');
+      const hasSkipSelf = !!param.getDecorator('SkipSelf');
+      const hasHost = !!param.getDecorator('Host');
       const hasOptional = !!param.getDecorator('Optional');
 
       const options = [];
 
-      if (hasOptional) [options.push('optional')];
       if (hasSelf) [options.push('self')];
+      if (hasSkipSelf) [options.push('skipSelf')];
+      if (hasHost) [options.push('host')];
+      if (hasOptional) [options.push('optional')];
 
       const params = options.length
         ? `, {${options.map((option) => `${option}: true`).join(', ')}}`
         : '';
 
+      const hasDiffrentTypeThanInjected =
+        param.getDecorator('Inject')?.getArguments()[0].getText() &&
+        param.getDecorator('Inject')?.getArguments()[0].getText() !==
+          param.getTypeNode().getText();
+
       return {
         name: param.getName(),
-        type: param.getTypeNode().getText(),
+        type: hasDiffrentTypeThanInjected
+          ? param.getTypeNode().getText()
+          : undefined,
         isReadonly: param.isReadonly(),
         scope: param.getScope(),
         initializer: `inject(${
